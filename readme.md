@@ -1,6 +1,6 @@
 # totalScanX – Handbuch
 
-Version 2026.11.24 · Copyright © Rainer Brell
+Version 2026.11.25 · Copyright © Rainer Brell
 
 totalScanX hilft blinden und sehbehinderten Menschen, gedruckte Texte mit einem Scanner zu erfassen, in Text umzuwandeln und als Dokument zu lesen, zu bearbeiten und zu speichern. Ein Dokument besteht aus Seiten; jede Seite hat einen Text und (optional) das gescannte Originalbild. Wie eine Seite erfasst und erkannt wird, bestimmt das aktive **Profil**.
 
@@ -337,7 +337,9 @@ Ist es eingeschaltet, schreibt das Programm in **`totalScanX.log`** im Programmo
 - alle **Ansagen**, die das Programm gemacht hat (Statusleiste und NVDA),
 - jeden **Profilwechsel** und jede **geänderte Einstellung** (alter und neuer Wert),
 - die **einzelnen Schritte einer Erfassung**: die Einstellungen des verwendeten Profils, Scan, Ausrichtung (Drehung), Entsprenkeln, die gewählte Erkennungssprache samt Konfidenzwerten, Dauer und Zahl der erkannten Wörter je Seite,
-- beim Start außerdem die Größe der Sprachdaten (Deutsch, Englisch).
+- beim Start außerdem die Größe der Sprachdaten (Deutsch, Englisch),
+- zu den **Scannertasten**: für welche Tasten sich totalScanX beim Scanner angemeldet hat, wohin Windows die Tasten laut Treiber schickt, welche anderen Scanprogramme bei Windows für die Tasten eingetragen sind und ob sie laufen, sowie jeder Tastendruck, der bei totalScanX ankommt,
+- beim Beenden: ob noch Hilfsprogramme oder Hintergrundaufgaben laufen und ob ein anderes Programm noch Dateien des Programms geöffnet hält. Kurz nach dem Beenden wird außerdem eingetragen, ob die temporären Programmdateien vollständig gelöscht werden konnten. Das hilft, wenn beim Schließen die Meldung „Failed to remove temporary directory“ erscheint.
 
 Der **Inhalt Ihrer Dokumente und getippte Buchstaben werden nicht protokolliert**; Zeichen, die Sie nur eintippen, und der erkannte Text bleiben außen vor. Aufgezeichnet werden nur Sondertasten und Tastenkombinationen sowie Wortanzahlen.
 
@@ -420,6 +422,9 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 
 ## Änderungsverlauf
 
+- 2026.11.25: Das Protokoll gibt genauer Auskunft über die Scannertasten: Anmeldung beim Scanner, eingetragene Scanprogramme und jeder ankommende Tastendruck. Das hilft, wenn eine Taste am Scanner in totalScanX nichts auslöst. Außerdem schaltet das Lesen der Tastenliste die Verbindung zum Scanner im Hauptprogramm nicht mehr versehentlich ab.
+- 2026.11.25: Das Protokoll hält beim Beenden fest, welche Programme noch Dateien von totalScanX geöffnet haben und ob die temporären Programmdateien gelöscht werden konnten. Damit lässt sich die Meldung „Failed to remove temporary directory“ beim Schließen aufklären.
+- 2026.11.25: Nach dem Start kommt totalScanX zuverlässiger in den Vordergrund. Bisher blieb der Fokus manchmal im vorigen Fenster, und nur die Taskleiste zeigte das Programm an. Das gilt auch für die Dialoge beim Start, etwa die Scannerauswahl.
 - 2026.11.24: totalScanX wird jetzt auf GitHub unter nvda-nachhaltig/totalScanX veröffentlicht. „Nach Updates suchen“ lädt die neue Programmdatei von dort, ersetzt die alte nach dem Beenden und startet die neue Version. Ältere Versionen suchen noch an der alten Stelle; sie müssen einmal von Hand durch diese Version ersetzt werden.
 - 2026.11.23: Beim Start konnten die Scannertasten ausfallen, weil zwei Programmteile gleichzeitig auf den Scanner zugriffen („Das WIA-Gerät ist ausgelastet“). Jetzt greift immer nur ein Teil zu; ist der Scanner gerade durch ein anderes Programm belegt, versucht totalScanX es nach kurzer Pause erneut.
 - 2026.11.23: Beim Schließen konnte die Meldung „Failed to remove temporary directory“ erscheinen. Programme, die totalScanX im Hintergrund startet (zum Beispiel die lokale KI), werden jetzt so gestartet und beendet, dass sie den temporären Ordner des Programms nicht mehr blockieren.
