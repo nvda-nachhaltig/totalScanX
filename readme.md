@@ -1,6 +1,6 @@
 # totalScanX – Handbuch
 
-Version 2026.11.25 · Copyright © Rainer Brell
+Version 2026.11.25.1 · Copyright © Rainer Brell
 
 totalScanX hilft blinden und sehbehinderten Menschen, gedruckte Texte mit einem Scanner zu erfassen, in Text umzuwandeln und als Dokument zu lesen, zu bearbeiten und zu speichern. Ein Dokument besteht aus Seiten; jede Seite hat einen Text und (optional) das gescannte Originalbild. Wie eine Seite erfasst und erkannt wird, bestimmt das aktive **Profil**.
 
@@ -311,7 +311,7 @@ Für „Erfassen mit KI“ lädt das Programm auf Wunsch eine lokale KI-Software
 
 - **Handbuch** (F1): zeigt dieses Handbuch als Webseite im Programmfenster. Das Handbuch ist in der Programmdatei enthalten; eine zusätzliche Datei ist nicht nötig. Mit Strg+Bild auf/ab, Pfeiltasten oder dem Lesemodus des Screenreaders navigieren Sie durch die Überschriften und Listen; Esc schließt.
 - **Erste Schritte**: zeigt die kurze Einstiegshilfe mit Scanner, aktivem Profil und den wichtigsten Tasten, die nach dem ersten Start einmalig als Meldung „totalScanX ist bereit“ erscheint.
-- **Über**: Programmname, Versionsnummer und Copyright. Die Versionsnummer ist das Datum der letzten Änderung im Format JJJJ.MM.TT.
+- **Über**: Programmname, Versionsnummer und Copyright. Die Versionsnummer ist das Datum der letzten Änderung im Format JJJJ.MM.TT; erscheinen an einem Tag mehrere Versionen, bekommt die spätere eine Zusatzzahl, zum Beispiel 2026.11.25.1.
 - **Nach Updates suchen**: prüft die Veröffentlichungen auf GitHub (https://github.com/nvda-nachhaltig/totalScanX/releases). Gibt es eine neuere Version, fragt das Programm, ob es sie herunterladen und installieren soll. Vorher werden ungespeicherte Dokumente abgefragt. Dann lädt es die neue Programmdatei (Esc bricht ab), beendet sich, ersetzt die Programmdatei und startet neu. Das dauert nach dem Beenden einige Sekunden. Die neue Version steht dort auch zum Herunterladen von Hand bereit: unter „Assets“ die Datei totalScanX.exe.
 
 ## 14. Protokolldatei
@@ -422,6 +422,7 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 
 ## Änderungsverlauf
 
+- 2026.11.25.1: Nach einem Update über „Nach Updates suchen“ startete die neue Version nicht, sondern meldete, dass eine DLL-Datei nicht geladen werden konnte. Die neue Programmdatei war dabei schon richtig eingesetzt; ein erneuter Start von Hand hat geholfen. Jetzt startet die neue Version nach dem Update von selbst, und der Download-Ordner wird vollständig aufgeräumt. Wer von 2026.11.25 aus aktualisiert, sieht die Meldung ein letztes Mal.
 - 2026.11.25: Das Protokoll gibt genauer Auskunft über die Scannertasten: Anmeldung beim Scanner, eingetragene Scanprogramme und jeder ankommende Tastendruck. Das hilft, wenn eine Taste am Scanner in totalScanX nichts auslöst. Außerdem schaltet das Lesen der Tastenliste die Verbindung zum Scanner im Hauptprogramm nicht mehr versehentlich ab.
 - 2026.11.25: Das Protokoll hält beim Beenden fest, welche Programme noch Dateien von totalScanX geöffnet haben und ob die temporären Programmdateien gelöscht werden konnten. Damit lässt sich die Meldung „Failed to remove temporary directory“ beim Schließen aufklären.
 - 2026.11.25: Nach dem Start kommt totalScanX zuverlässiger in den Vordergrund. Bisher blieb der Fokus manchmal im vorigen Fenster, und nur die Taskleiste zeigte das Programm an. Das gilt auch für die Dialoge beim Start, etwa die Scannerauswahl.
