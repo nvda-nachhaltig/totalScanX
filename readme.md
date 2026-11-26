@@ -1,6 +1,6 @@
 # totalScanX – Handbuch
 
-Version 2026.11.25.1 · Copyright © Rainer Brell
+Version 2026.11.26 · Copyright © Rainer Brell
 
 totalScanX hilft blinden und sehbehinderten Menschen, gedruckte Texte mit einem Scanner zu erfassen, in Text umzuwandeln und als Dokument zu lesen, zu bearbeiten und zu speichern. Ein Dokument besteht aus Seiten; jede Seite hat einen Text und (optional) das gescannte Originalbild. Wie eine Seite erfasst und erkannt wird, bestimmt das aktive **Profil**.
 
@@ -63,7 +63,7 @@ Neben der Programmdatei legt totalScanX bei Bedarf Ordner an, die zum Programm g
 3. Wurden mehrere Scanner gefunden und ist der zuletzt benutzte nicht darunter, fragt ein Auswahldialog nach. Der zuletzt benutzte Scanner wird sonst ohne Rückfrage verwendet. Scanner erscheinen mit ihrer Schnittstelle, zum Beispiel „LiDE 400 (WIA)“.
 4. **Tesseract OCR:** Danach prüft das Programm, ob die Texterkennung Tesseract OCR installiert ist. Fehlt sie, erscheint ein Hinweis mit der Frage, ob sie jetzt installiert werden soll. Der Hinweis nennt, dass dafür **Administratorrechte** nötig sind: Windows zeigt dazu eine Meldung (Benutzerkontensteuerung), die Sie mit „Ja“ bestätigen müssen. Wählen Sie **Beenden** oder kann die Installation nicht durchgeführt werden, schließt sich das Programm, denn ohne Tesseract OCR kann totalScanX nicht arbeiten. Fehlen nur die Sprachpakete Deutsch und Englisch, werden sie automatisch geladen.
 5. **Lokale KI:** Ist die lokale KI noch nicht installiert, fragt das Programm, ob sie installiert werden soll. Sie benötigt etwa 8 GB Speicherplatz; das Programm prüft vor der Frage, ob so viel frei ist, und nennt den freien Platz. Die Frage nennt die Vorteile gegenüber einer Online-KI (Ihre Dokumente bleiben auf Ihrem Computer, nach der Installation ist keine Internetverbindung nötig, kein Konto, keine Kosten) und den Nachteil, dass die Verarbeitung etwas länger dauern kann. Wählen Sie **Später**, startet das Programm trotzdem; die Frage kommt dann nicht mehr, und die KI lässt sich jederzeit über **Einstellungen > Lokale KI installieren** nachinstallieren. Ist zu wenig Platz frei, weist das Programm darauf hin.
-6. **Scannertasten:** Hat der Scanner Tasten (WIA), fragt das Programm einmalig, ob sie mit Profilen belegt werden sollen, und öffnet bei „Belegen“ gleich die Auswahl. Die Belegung lässt sich später unter Einstellungen > Allgemeine Einstellungen > Scannertasten ändern.
+6. **Scannertasten:** Hat der Scanner Tasten (WIA), fragt das Programm einmalig, ob sie mit Profilen belegt werden sollen, und öffnet bei „Belegen“ gleich die Auswahl. Danach bietet es an, sich bei Windows für die Tasten einzutragen (Abschnitt 11). Die Belegung lässt sich später unter Einstellungen > Allgemeine Einstellungen > Scannertasten ändern.
 7. Ist die automatische Update-Prüfung eingeschaltet und besteht eine Internetverbindung, prüft das Programm auf eine neuere Version (siehe Abschnitt 13).
 8. Läuft der Screenreader NVDA und wurde noch nicht entschieden, fragt das Programm, ob es eine kleine Hilfsdatei laden soll, damit NVDA wichtige Meldungen direkt sprechen kann (siehe Abschnitt 12).
 9. **totalScanX ist bereit:** Sind beim ersten Start alle Fragen beantwortet und alle Einrichtungen abgeschlossen, erscheint einmalig die Meldung „totalScanX ist bereit“. Sie nennt Ihren Scanner und das aktive Profil und fasst den Einstieg zusammen: Seite auflegen und mit der **Leertaste** oder **F4** erfassen, Esc bricht ab, Strg+Bild ab und Strg+Bild auf blättern, Strg+S speichert, Strg+E schaltet den Bearbeitungsmodus, Alt öffnet die Menüleiste, **F1** öffnet das Handbuch. Nach **OK** stehen Sie im Hauptfenster und können sofort erfassen. Die Meldung kommt danach nicht mehr von selbst; Sie finden sie jederzeit unter **Hilfe > Erste Schritte**.
@@ -241,6 +241,13 @@ Die Bearbeitungsfunktionen brauchen den Bearbeitungsmodus (Strg+E), außer Kopie
 
 **Korrekturwörterbuch**: Ein Wörterbuch aus „falsch erkanntes Wort“ und „Korrektur“ (ganze Wörter, ohne Leerzeichen im falschen Wort; die Korrektur darf Leerzeichen enthalten), optional mit Beachtung der Groß-/Kleinschreibung. Es wird bei jedem Scan automatisch angewendet (Profil-Einstellung) und kann mit „Auf Dokument anwenden“ nachträglich auf das ganze Dokument angewendet werden.
 
+Das Korrekturwörterbuch steht in einer eigenen Datei: `%APPDATA%\totalScanX\corrections.json` (im Explorer in die Adresszeile oder mit Windows+R den Ordner `%APPDATA%\totalScanX` eingeben). So können Sie es an andere weitergeben:
+
+- Weitergeben: die Datei corrections.json kopieren, zum Beispiel per E-Mail oder auf einen USB-Stick.
+- Übernehmen: totalScanX beenden, die erhaltene Datei in den Ordner `%APPDATA%\totalScanX` legen und die vorhandene ersetzen, dann totalScanX starten. Das eigene Wörterbuch wird dabei ersetzt, nicht ergänzt; wer es behalten möchte, sichert die alte Datei vorher.
+- In der Datei stehen die Einträge mit englischen Feldnamen: „wrong“ (falsch erkanntes Wort), „right“ (Korrektur) und „match_case“ (Groß-/Kleinschreibung beachten). So bleibt sie in jeder Sprachfassung von totalScanX gleich.
+- Ist die Datei beschädigt, lässt totalScanX sie unverändert und arbeitet ohne Wörterbuch weiter, bis sie wieder lesbar ist oder gelöscht wird.
+
 **Brief auf einen Blick** (F3): Nennt die fünf wichtigsten Angaben eines Schreibens: **Absender, Datum, Art** (Rechnung, Mahnung, Bescheid, Werbung …), **Betrag** und **Frist**. Das Ergebnis erscheint in einem Fenster, zuerst als ein Satz („Rechnung von Stadtwerke Musterstadt GmbH vom 3.11.2026. Betrag 96,40 Euro. Frist 24.11.2026.“), darunter als Liste. Mit **Als neue Seite einfügen** oder **Kopieren** lässt es sich weiterverwenden. Ausgewertet wird das ganze Dokument.
 
 Ist die lokale KI eingerichtet, liest sie das Schreiben (einige Sekunden). Zum Schutz vor erfundenen Angaben übernimmt das Programm Datum, Betrag, Frist und Absender der KI nur, wenn sie sich im Text wiederfinden; sonst steht dort „keine Angabe“. Ohne lokale KI arbeitet eine einfache Auswertung nach festen Mustern; sie findet weniger, ist aber sofort fertig. Bitte prüfen Sie wichtige Angaben wie Beträge und Fristen immer im Originaltext.
@@ -287,6 +294,15 @@ Die früheren Schnelltasten F5 bis F8 gibt es nicht mehr; alles läuft einheitli
 
 Scannertasten: Bei WIA-Scannern liest das Programm aus dem Treiber, welche Tasten der Scanner hat (zum Beispiel Scannen, Kopieren/Drucken, E-Mail, Fax, OCR). Jeder Taste lässt sich ein **Profil** zuordnen; ein Tastendruck am Scanner erfasst dann direkt mit diesem Profil und seinen Einstellungen. Zur Auswahl stehen dieselben Profile wie im Menü Erfassen > Profil, dazu „(keine Belegung)“. Beim Programmstart fragt totalScanX einmalig pro Scanner, ob die Tasten belegt werden sollen. Später ändern Sie die Belegung unter **Einstellungen > Allgemeine Einstellungen** auf der Registerkarte **Scannertasten**. Welche physische Taste gedrückt wurde, kann Windows nicht unterscheiden, nur ihre Art. Bei TWAIN-Scannern gibt es keine Tastenüberwachung. Die früheren festen Tastenbelegungen aus dem Assistenten sind entfallen.
 
+**Bei Windows eintragen:** Manche Scanner schicken einen Tastendruck nur an das Programm, das Windows für diese Taste als Standard kennt. Damit die Tasten bei jedem Scanner sicher ankommen, trägt sich totalScanX auf Wunsch bei Windows als Standardprogramm für die Tasten Ihres Scanners ein:
+
+- Nach dem Belegen der Tasten beim Programmstart fragt totalScanX, ob es sich eintragen soll. Später geht das auf der Registerkarte **Scannertasten** mit der Schaltfläche **Bei Windows eintragen**; **Bei Windows austragen** macht es rückgängig. Über den Schaltflächen steht, ob totalScanX gerade eingetragen ist. Bedienbar ist nur die Schaltfläche, die gerade passt; die andere ist ausgegraut und wird beim Wechsel mit Tab übersprungen. Wurde die Programmdatei seit dem Eintragen verschoben, sind beide bedienbar: dann bitte erneut eintragen.
+- Dafür fragt Windows einmal nach Ihrer Zustimmung (Sicherheitsabfrage „Möchten Sie zulassen, dass durch diese App Änderungen an Ihrem Gerät vorgenommen werden?“). Ohne diese Zustimmung lässt Windows den Eintrag nicht zu.
+- Danach startet Windows totalScanX beim Tastendruck, falls es noch nicht läuft, und das Programm erfasst mit dem Profil der Taste. Läuft totalScanX schon, übernimmt das laufende Programm den Tastendruck. Kommt ein Tastendruck auf beiden Wegen an, wird er nur einmal ausgeführt.
+- Ist eine Taste nicht belegt, sagt totalScanX „Scannertaste … ist nicht belegt.“
+- Ein anderes Programm, das bisher auf die Tasten reagiert hat, tut das nach dem Eintragen nicht mehr.
+- Wenn Sie die Programmdatei totalScanX.exe an einen anderen Ort verschieben, tragen Sie totalScanX bitte erneut ein; Windows startet sonst die alte Stelle.
+
 ## 12. Einstellungen
 
 - **Allgemeine Einstellungen** (vier Registerkarten, Strg+Tab wechselt):
@@ -301,7 +317,7 @@ Scannertasten: Bei WIA-Scannern liest das Programm aus dem Treiber, welche Taste
 - **Protokolldatei totalScanX.log schreiben**: Standard ist aus. Eingeschaltet schreibt das Programm Start, Scans, Dateivorgänge und Fehler in die Protokolldatei (siehe Abschnitt 14). Gilt sofort.
 - **Wichtige Meldungen direkt über NVDA sprechen**: Mit dem Screenreader NVDA sagt totalScanX dann Meldungen sofort an und zeigt sie auf der Braillezeile, zum Beispiel „Seite 3 von 12“ beim Blättern mit Strg+Bild auf/ab, „Bearbeitungsmodus“ / „Nur-Lese-Modus“ bei Strg+E, „Originalansicht“ / „Textansicht“, „Bild nach rechts gedreht“, „Zoom 125 Prozent“ (auch „Größter Zoom erreicht“), „Auf Seitenbreite gezoomt, Zoom 76 Prozent“ sowie Meldungen wie „Seite gelöscht“. Dafür braucht das Programm den **NVDA Controller Client** von NV Access (kleine Datei, etwa 4,5 MB Download, Lizenz LGPL 2.1). Er wird nur nach Ihrer Zustimmung aus dem Internet geladen und neben dem Programm im Ordner „nvda“ gespeichert. Beim Programmstart fragt totalScanX einmal danach, wenn NVDA läuft. Antworten Sie mit „Nein“, wird das gemerkt und nicht erneut gefragt; Sie können es hier jederzeit nachholen (Kontrollfeld einschalten, die Datei wird dann geladen). Ausschalten stellt die Ansagen wieder ab. Läuft NVDA nicht, geschieht nichts. Die Statuszeile wird weiterhin gefüllt.
 
-Alle Einstellungen werden in `%APPDATA%\totalScanX\settings.json` gespeichert.
+Alle Einstellungen werden in `%APPDATA%\totalScanX\settings.json` gespeichert, das Korrekturwörterbuch daneben in `corrections.json` (Abschnitt 8).
 
 ### Lokale KI
 
@@ -412,6 +428,7 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 - Text ist Buchstabensalat: Meist falsch ausgerichtete Vorlage; das Programm dreht automatisch. Sonst Auflösung erhöhen oder „Ausrichtung der eingelegten Seite prüfen“ nutzen. Bei aufgeschlagenen Heften oder Büchern (zwei Seiten nebeneinander) „Doppelseite in zwei Seiten teilen“ einschalten oder mit dem Profil „Erfassen mit KI“ erfassen.
 - Fehlende Sprachdaten: Werden vor dem Scan zum Download angeboten (Internet nötig).
 - KI antwortet nicht / nicht eingerichtet: Einstellungen > Lokale KI installieren wählen.
+- Eine Scannertaste löst in totalScanX nichts aus: Bei manchen Scannern schickt Windows den Tastendruck nur an ein fest eingestelltes Programm. Abhilfe: totalScanX auf der Registerkarte Scannertasten mit „Bei Windows eintragen“ als Programm für die Tasten eintragen (Abschnitt 11). Falls das nicht hilft: Unter Windows in den Eigenschaften des Scanners (Systemsteuerung > Geräte und Drucker > Rechtsklick auf den Scanner > Scannereigenschaften) auf der Registerkarte „Ereignisse“ nacheinander jede Taste auswählen und „Keine Aktion durchführen“ bzw. „Kein Programm starten“ wählen. Läuft ein Hilfsprogramm des Scannerherstellers für die Tasten, dieses beenden. Danach totalScanX neu starten. Ob ein Tastendruck ankommt, steht im Protokoll (Abschnitt 14) als „WIA-Ereignis empfangen“.
 - Ein Tastendruck am Scanner startet zusätzlich ein anderes Scanprogramm: Windows meldet jeden Tastendruck an alle Programme, die sich dafür eingetragen haben; totalScanX kann das nicht verhindern. Abhilfe: Unter Windows in den Eigenschaften des Scanners (Systemsteuerung > Geräte und Drucker > Rechtsklick auf den Scanner > Scannereigenschaften) auf der Registerkarte „Ereignisse“ für die Taste „Kein Programm starten“ wählen, oder das andere Programm schließen bzw. dort die Scannertasten abschalten.
 - Meldung „Die Erkennung ist unsicher“: Seite gerade und vollständig auflegen, Deckel schließen, bei kleiner Schrift die Auflösung im Profil erhöhen; oder die Seite mit der lokalen KI neu lesen lassen.
 - Hörfassung: keine oder nur englische Stimme: In den Windows-Einstellungen unter Zeit und Sprache > Sprachausgabe eine deutsche Stimme hinzufügen.
@@ -422,6 +439,9 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 
 ## Änderungsverlauf
 
+- 2026.11.26: totalScanX kann sich bei Windows als Standardprogramm für die Scannertasten eintragen (Einstellungen > Allgemeine Einstellungen > Scannertasten > Bei Windows eintragen; einmalig mit Sicherheitsabfrage). Dann kommen die Tasten bei jedem Scanner sicher an, und ein Tastendruck startet totalScanX auch, wenn es noch nicht läuft. Eine nicht belegte Taste wird angesagt.
+- 2026.11.26: Neuer Hinweis in der Fehlersuche, wenn eine Scannertaste in totalScanX nichts auslöst. Außerdem schreibt das Protokoll die laufenden Programme wieder richtig auf.
+- 2026.11.26: Das Korrekturwörterbuch steht jetzt in einer eigenen Datei (corrections.json neben den Einstellungen) und lässt sich so an andere weitergeben. Ein vorhandenes Wörterbuch wird beim ersten Start automatisch übernommen.
 - 2026.11.25.1: Nach einem Update über „Nach Updates suchen“ startete die neue Version nicht, sondern meldete, dass eine DLL-Datei nicht geladen werden konnte. Die neue Programmdatei war dabei schon richtig eingesetzt; ein erneuter Start von Hand hat geholfen. Jetzt startet die neue Version nach dem Update von selbst, und der Download-Ordner wird vollständig aufgeräumt. Wer von 2026.11.25 aus aktualisiert, sieht die Meldung ein letztes Mal.
 - 2026.11.25: Das Protokoll gibt genauer Auskunft über die Scannertasten: Anmeldung beim Scanner, eingetragene Scanprogramme und jeder ankommende Tastendruck. Das hilft, wenn eine Taste am Scanner in totalScanX nichts auslöst. Außerdem schaltet das Lesen der Tastenliste die Verbindung zum Scanner im Hauptprogramm nicht mehr versehentlich ab.
 - 2026.11.25: Das Protokoll hält beim Beenden fest, welche Programme noch Dateien von totalScanX geöffnet haben und ob die temporären Programmdateien gelöscht werden konnten. Damit lässt sich die Meldung „Failed to remove temporary directory“ beim Schließen aufklären.
