@@ -1,6 +1,6 @@
 # totalScanX – Handbuch
 
-Version 2026.11.27.3 · Copyright © Rainer Brell
+Version 2026.11.27.4 · Copyright © Rainer Brell
 
 totalScanX hilft blinden und sehbehinderten Menschen, gedruckte Texte mit einem Scanner zu erfassen, in Text umzuwandeln und als Dokument zu lesen, zu bearbeiten und zu speichern. Ein Dokument besteht aus Seiten; jede Seite hat einen Text und (optional) das gescannte Originalbild. Wie eine Seite erfasst und erkannt wird, bestimmt das aktive **Profil**.
 
@@ -443,6 +443,7 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 
 ## Änderungsverlauf
 
+- 2026.11.27.4: Das Protokoll hält auch nach einem Update fest, ob die temporären Programmdateien der alten Version gelöscht wurden. Bisher fehlte dieser Eintrag, wenn die neue Version schon lief.
 - 2026.11.27.3: Keine neuen Funktionen. Mit dieser Version lässt sich prüfen, dass das Update jetzt ohne sichtbare Fenster abläuft.
 - 2026.11.27.2: Während eines Updates öffnete sich jede Sekunde kurz ein Fenster „timeout … Eingabeaufforderung“ und nahm den Fokus. Danach las der Screenreader weiter den Explorer vor, obwohl die neue Version schon vorn war. Das Update läuft jetzt ganz ohne sichtbares Fenster. Außerdem meldet totalScanX beim Start den Fokus so, dass der Screenreader das Programmfenster sicher ansagt.
 - 2026.11.27.1: Nach einem Update kommt die neue Version zuverlässiger in den Vordergrund. Bisher holte sich manchmal ein anderes Fenster den Fokus kurz nach dem Start zurück. totalScanX prüft jetzt einige Sekunden lang, ob es vorn bleibt, und holt sich den Fokus zurück, solange Sie noch nichts eingegeben haben. Wechseln Sie selbst in ein anderes Fenster, bleibt es dabei.
