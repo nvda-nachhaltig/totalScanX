@@ -1,6 +1,6 @@
 # totalScanX – Handbuch
 
-Version 2026.11.27 · Copyright © Rainer Brell
+Version 2026.11.27.1 · Copyright © Rainer Brell
 
 totalScanX hilft blinden und sehbehinderten Menschen, gedruckte Texte mit einem Scanner zu erfassen, in Text umzuwandeln und als Dokument zu lesen, zu bearbeiten und zu speichern. Ein Dokument besteht aus Seiten; jede Seite hat einen Text und (optional) das gescannte Originalbild. Wie eine Seite erfasst und erkannt wird, bestimmt das aktive **Profil**.
 
@@ -443,6 +443,7 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 
 ## Änderungsverlauf
 
+- 2026.11.27.1: Nach einem Update kommt die neue Version zuverlässiger in den Vordergrund. Bisher holte sich manchmal ein anderes Fenster den Fokus kurz nach dem Start zurück. totalScanX prüft jetzt einige Sekunden lang, ob es vorn bleibt, und holt sich den Fokus zurück, solange Sie noch nichts eingegeben haben. Wechseln Sie selbst in ein anderes Fenster, bleibt es dabei.
 - 2026.11.27: tsx-Dateien lassen sich aus dem Explorer öffnen. Bisher startete totalScanX zwar, öffnete die Datei aber nicht. Läuft totalScanX schon, öffnet das laufende Programm die Datei. Neue Einstellung „tsx-Dateien mit totalScanX öffnen“ unter Einstellungen > Allgemeine Einstellungen > Allgemein trägt die Verknüpfung bei Windows ein.
 - 2026.11.26.1: Scannertasten auch bei Treibern, die ihre Tasten nicht direkt nennen, sie aber bei Windows hinterlegt haben (zum Beispiel der Canon-Treiber „Canon IJ Scanner“). totalScanX liest die Tasten dann aus dem Windows-Eintrag und trägt sich, wenn der übliche Weg nicht geht, auf einem älteren Windows-Weg für sie ein.
 - 2026.11.26: totalScanX kann sich bei Windows als Standardprogramm für die Scannertasten eintragen (Einstellungen > Allgemeine Einstellungen > Scannertasten > Bei Windows eintragen; einmalig mit Sicherheitsabfrage). Dann kommen die Tasten bei jedem Scanner sicher an, und ein Tastendruck startet totalScanX auch, wenn es noch nicht läuft. Eine nicht belegte Taste wird angesagt.
