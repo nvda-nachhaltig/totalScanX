@@ -1,6 +1,6 @@
 # totalScanX – Handbuch
 
-Version 2026.11.26 · Copyright © Rainer Brell
+Version 2026.11.27 · Copyright © Rainer Brell
 
 totalScanX hilft blinden und sehbehinderten Menschen, gedruckte Texte mit einem Scanner zu erfassen, in Text umzuwandeln und als Dokument zu lesen, zu bearbeiten und zu speichern. Ein Dokument besteht aus Seiten; jede Seite hat einen Text und (optional) das gescannte Originalbild. Wie eine Seite erfasst und erkannt wird, bestimmt das aktive **Profil**.
 
@@ -185,6 +185,7 @@ Mehrere Dokumente können gleichzeitig geöffnet sein; **Strg+F6** schaltet zum 
   - **Textdatei (.txt), RTF-Datei (.rtf), HTML-Datei (.html)**: nur der Text, ohne Bilder und Lesezeichen.
   - **PDF nur mit Originalbildern, ohne Text (.pdf)**: nur die Bilder der Seiten; nicht durchsuchbar und für Screenreader nicht lesbar. Nur möglich, wenn Originalbilder vorhanden sind.
 - **Öffnen**: .tsx, .txt, .rtf, .pdf und Bilddateien (.png, .jpg, .bmp, .tif, .gif, .pcx). PDFs mit Textebene werden direkt übernommen, reine Bild-PDFs und Bilder werden per Texterkennung erkannt (mit den speziellen Profilen).
+- **Aus dem Explorer öffnen**: Ist totalScanX für tsx-Dateien eingetragen (Einstellungen > Allgemeine Einstellungen > Registerkarte Allgemein, „tsx-Dateien mit totalScanX öffnen“), öffnet Eingabe oder Doppelklick auf eine tsx-Datei im Explorer sie in totalScanX. Läuft totalScanX schon, öffnet das laufende Programm die Datei und kommt nach vorn.
 
 Beim Schließen eines Dokuments oder Beenden des Programms fragt totalScanX bei ungespeicherten Änderungen: **Speichern**, **Nicht speichern** oder **Abbrechen**. Das gilt auch vor einem Update.
 
@@ -300,6 +301,7 @@ Scannertasten: Bei WIA-Scannern liest das Programm aus dem Treiber, welche Taste
 - Dafür fragt Windows einmal nach Ihrer Zustimmung (Sicherheitsabfrage „Möchten Sie zulassen, dass durch diese App Änderungen an Ihrem Gerät vorgenommen werden?“). Ohne diese Zustimmung lässt Windows den Eintrag nicht zu.
 - Danach startet Windows totalScanX beim Tastendruck, falls es noch nicht läuft, und das Programm erfasst mit dem Profil der Taste. Läuft totalScanX schon, übernimmt das laufende Programm den Tastendruck. Kommt ein Tastendruck auf beiden Wegen an, wird er nur einmal ausgeführt.
 - Ist eine Taste nicht belegt, sagt totalScanX „Scannertaste … ist nicht belegt.“
+- Manche Treiber nennen ihre Tasten nicht direkt, haben sie aber bei Windows hinterlegt. totalScanX liest sie dann von dort und trägt sich, falls nötig, auf einem älteren Windows-Weg ein, den auch andere Scanprogramme benutzen. Dabei startet es den Windows-Dienst für Scanner und Kameras kurz neu. Die vorige Einstellung wird gesichert und beim Austragen wiederhergestellt.
 - Ein anderes Programm, das bisher auf die Tasten reagiert hat, tut das nach dem Eintragen nicht mehr.
 - Wenn Sie die Programmdatei totalScanX.exe an einen anderen Ort verschieben, tragen Sie totalScanX bitte erneut ein; Windows startet sonst die alte Stelle.
 
@@ -315,6 +317,7 @@ Scannertasten: Bei WIA-Scannern liest das Programm aus dem Treiber, welche Taste
 - **Lokale KI installieren**: Lädt die lokale KI (etwa 8 GB), falls sie noch nicht oder nicht vollständig eingerichtet ist, und prüft vorher den freien Platz. Fehlt nur eines der beiden Modelle, wird nur dieses nachgeladen (dann genügen 5 GB). Ist sie schon vorhanden, meldet das Programm das nur. Tesseract OCR wird beim Programmstart eingerichtet.
 - **Beim Start nach Updates suchen** (Allgemeine Einstellungen, Registerkarte Allgemein): ein- oder ausschalten.
 - **Protokolldatei totalScanX.log schreiben**: Standard ist aus. Eingeschaltet schreibt das Programm Start, Scans, Dateivorgänge und Fehler in die Protokolldatei (siehe Abschnitt 14). Gilt sofort.
+- **tsx-Dateien mit totalScanX öffnen (Eingabe oder Doppelklick im Explorer)**: Trägt totalScanX bei Windows als Programm für tsx-Dateien ein, nur für Ihr Benutzerkonto und ohne Sicherheitsabfrage. Ausschalten entfernt den Eintrag wieder. Haben Sie in Windows selbst schon ein anderes Programm für tsx-Dateien gewählt, hat diese Wahl Vorrang; totalScanX sagt dann, wie Sie das ändern: im Explorer auf einer tsx-Datei die Anwendungstaste, „Öffnen mit“ > „Andere App auswählen“, totalScanX wählen und „Immer“. Wenn Sie die Programmdatei an einen anderen Ort verschieben, schalten Sie die Einstellung bitte aus und wieder ein.
 - **Wichtige Meldungen direkt über NVDA sprechen**: Mit dem Screenreader NVDA sagt totalScanX dann Meldungen sofort an und zeigt sie auf der Braillezeile, zum Beispiel „Seite 3 von 12“ beim Blättern mit Strg+Bild auf/ab, „Bearbeitungsmodus“ / „Nur-Lese-Modus“ bei Strg+E, „Originalansicht“ / „Textansicht“, „Bild nach rechts gedreht“, „Zoom 125 Prozent“ (auch „Größter Zoom erreicht“), „Auf Seitenbreite gezoomt, Zoom 76 Prozent“ sowie Meldungen wie „Seite gelöscht“. Dafür braucht das Programm den **NVDA Controller Client** von NV Access (kleine Datei, etwa 4,5 MB Download, Lizenz LGPL 2.1). Er wird nur nach Ihrer Zustimmung aus dem Internet geladen und neben dem Programm im Ordner „nvda“ gespeichert. Beim Programmstart fragt totalScanX einmal danach, wenn NVDA läuft. Antworten Sie mit „Nein“, wird das gemerkt und nicht erneut gefragt; Sie können es hier jederzeit nachholen (Kontrollfeld einschalten, die Datei wird dann geladen). Ausschalten stellt die Ansagen wieder ab. Läuft NVDA nicht, geschieht nichts. Die Statuszeile wird weiterhin gefüllt.
 
 Alle Einstellungen werden in `%APPDATA%\totalScanX\settings.json` gespeichert, das Korrekturwörterbuch daneben in `corrections.json` (Abschnitt 8).
@@ -428,6 +431,7 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 - Text ist Buchstabensalat: Meist falsch ausgerichtete Vorlage; das Programm dreht automatisch. Sonst Auflösung erhöhen oder „Ausrichtung der eingelegten Seite prüfen“ nutzen. Bei aufgeschlagenen Heften oder Büchern (zwei Seiten nebeneinander) „Doppelseite in zwei Seiten teilen“ einschalten oder mit dem Profil „Erfassen mit KI“ erfassen.
 - Fehlende Sprachdaten: Werden vor dem Scan zum Download angeboten (Internet nötig).
 - KI antwortet nicht / nicht eingerichtet: Einstellungen > Lokale KI installieren wählen.
+- Die Scannertasten lösen auch nach „Bei Windows eintragen“ nichts aus: Manche allgemeinen Treiber, die Windows selbst einrichtet, geben Tastendrücke überhaupt nicht weiter. Abhilfe: den Treiber für genau dieses Scannermodell von der Internetseite des Herstellers installieren, totalScanX neu starten und die Tasten erneut eintragen.
 - Eine Scannertaste löst in totalScanX nichts aus: Bei manchen Scannern schickt Windows den Tastendruck nur an ein fest eingestelltes Programm. Abhilfe: totalScanX auf der Registerkarte Scannertasten mit „Bei Windows eintragen“ als Programm für die Tasten eintragen (Abschnitt 11). Falls das nicht hilft: Unter Windows in den Eigenschaften des Scanners (Systemsteuerung > Geräte und Drucker > Rechtsklick auf den Scanner > Scannereigenschaften) auf der Registerkarte „Ereignisse“ nacheinander jede Taste auswählen und „Keine Aktion durchführen“ bzw. „Kein Programm starten“ wählen. Läuft ein Hilfsprogramm des Scannerherstellers für die Tasten, dieses beenden. Danach totalScanX neu starten. Ob ein Tastendruck ankommt, steht im Protokoll (Abschnitt 14) als „WIA-Ereignis empfangen“.
 - Ein Tastendruck am Scanner startet zusätzlich ein anderes Scanprogramm: Windows meldet jeden Tastendruck an alle Programme, die sich dafür eingetragen haben; totalScanX kann das nicht verhindern. Abhilfe: Unter Windows in den Eigenschaften des Scanners (Systemsteuerung > Geräte und Drucker > Rechtsklick auf den Scanner > Scannereigenschaften) auf der Registerkarte „Ereignisse“ für die Taste „Kein Programm starten“ wählen, oder das andere Programm schließen bzw. dort die Scannertasten abschalten.
 - Meldung „Die Erkennung ist unsicher“: Seite gerade und vollständig auflegen, Deckel schließen, bei kleiner Schrift die Auflösung im Profil erhöhen; oder die Seite mit der lokalen KI neu lesen lassen.
@@ -439,6 +443,8 @@ Nicht enthalten: Sprachausgabe und „Alles lesen“ (dafür ist der Screenreade
 
 ## Änderungsverlauf
 
+- 2026.11.27: tsx-Dateien lassen sich aus dem Explorer öffnen. Bisher startete totalScanX zwar, öffnete die Datei aber nicht. Läuft totalScanX schon, öffnet das laufende Programm die Datei. Neue Einstellung „tsx-Dateien mit totalScanX öffnen“ unter Einstellungen > Allgemeine Einstellungen > Allgemein trägt die Verknüpfung bei Windows ein.
+- 2026.11.26.1: Scannertasten auch bei Treibern, die ihre Tasten nicht direkt nennen, sie aber bei Windows hinterlegt haben (zum Beispiel der Canon-Treiber „Canon IJ Scanner“). totalScanX liest die Tasten dann aus dem Windows-Eintrag und trägt sich, wenn der übliche Weg nicht geht, auf einem älteren Windows-Weg für sie ein.
 - 2026.11.26: totalScanX kann sich bei Windows als Standardprogramm für die Scannertasten eintragen (Einstellungen > Allgemeine Einstellungen > Scannertasten > Bei Windows eintragen; einmalig mit Sicherheitsabfrage). Dann kommen die Tasten bei jedem Scanner sicher an, und ein Tastendruck startet totalScanX auch, wenn es noch nicht läuft. Eine nicht belegte Taste wird angesagt.
 - 2026.11.26: Neuer Hinweis in der Fehlersuche, wenn eine Scannertaste in totalScanX nichts auslöst. Außerdem schreibt das Protokoll die laufenden Programme wieder richtig auf.
 - 2026.11.26: Das Korrekturwörterbuch steht jetzt in einer eigenen Datei (corrections.json neben den Einstellungen) und lässt sich so an andere weitergeben. Ein vorhandenes Wörterbuch wird beim ersten Start automatisch übernommen.
